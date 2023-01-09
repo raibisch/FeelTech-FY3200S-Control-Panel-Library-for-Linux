@@ -1,5 +1,12 @@
-# FeelTech-FY3200S-Control-Panel-Library-for-Linux
+# FeelTech FY3200S Control-Panel-GUI for Linux
 A Library and GUI to Control a FeelTech FY3200S Signal Generator for Linux using FreePascal &amp; Lazarus
+
+### Changes in forked version:
+- Add support and error handling for custom serial ports (/dev/ttyUSB0.../dev/ttyUSB5)
+- Add Mouse-Wheel support (until now only for CH1)
+- Change handling for AWG upload (current version does not work for me)
+- Some changes in UI Layout
+
 
 ![Screenshot](ControlTab.png)
 ![Screenshot](ARbWaveTab.png)
@@ -45,7 +52,6 @@ To save the current control state into one of the instrument's memories, or to
 save the state into a disk file, Shift+Click on the desired button in the "Mem"
 panel.
 
-
 ### ARB WAVE TAB
 This tab allows you to load an arbitrary waveform defined in a disk file into one
 of the four arbitrary waveform memories of the FY3200S (ARB1 ~ ARB4).  The file
@@ -72,9 +78,9 @@ sequence of commands that will be interpreted and sent to the instrument.
 A script file is simply a text file with each line in the file consisting
 of a number of comma-seperated instructions, where each instruction consists of a
 two character code followed by a parameter. As an example, the command string
-
-          "WP0,FP1000.00,AP2.00"
-
+```
+          WP0,FP1000.00,AP2.00
+```
 contains three instructions that will cause the primary, or Ch1, waveform ("WP") to
 be set to "Sine", its frequency ("FP") to be set to 1000.00 Hz and its peak-to-peak
 amplitude ("AP") set to 2.00 volts.
@@ -112,11 +118,5 @@ file is assumed to be terminated by a CR/LF pair.  Script length is limited to
 always preceeded by a semicolon, can be appended to the end of any line, or
 after the last line containing a command (commands must always begin on the
 first line of the script).
-
-Another Lazarus program that includes the the "SimpleIPCClient" component in its code can exercise control all of the functions
-of the FS3200S by sending script command strings (in the format described above) to this program's embedded server implemented
-using the "SimpleIPCServer" component in this code.   The client must be set to send messages to serverID "FY3200SIPC"
-and the "Remote" checkbox must be checked in the Script tab of this program.  When remote control is no longer desired, the client
-can uncheck this box by sending a "HL" command to the server.
 
 (FY3200S is the Linux executable for this program.)
