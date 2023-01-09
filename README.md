@@ -32,8 +32,7 @@ waveforms that can be stored in the instrument's memory (ARB1 ~ ARB4).  The
 Script tab allows you to write simple scripts that will control the instrument,
 stepping between a sequence of control settings.
 
-CONTROL TAB
-
+### CONTROL TAB
 The controls on this tab let you manually control the various programmabe features
 of the instrument.
 
@@ -47,8 +46,7 @@ save the state into a disk file, Shift+Click on the desired button in the "Mem"
 panel.
 
 
-ARB WAVE TAB
-
+### ARB WAVE TAB
 This tab allows you to load an arbitrary waveform defined in a disk file into one
 of the four arbitrary waveform memories of the FY3200S (ARB1 ~ ARB4).  The file
 must must be a text file consisting of exactly 2048 lines, with each line containing
@@ -66,8 +64,7 @@ o  Review the waveform data as shown on the tab as a list of integers in the ran
    transfer the waveform data to the FT3200S arbitrary function memory you selected.
    This takes a while.
 
-SCRIPT TAB
-
+### SCRIPT TAB
 This tab provides a very primative script capability for controling the FT3200S.
 It allows you to load, edit, save and execute a simple script file contining a
 sequence of commands that will be interpreted and sent to the instrument.
@@ -84,7 +81,7 @@ amplitude ("AP") set to 2.00 volts.
 
 The set of understood instructions is as follows, where "n" denotes an integer value
 and "f" denotes a fixed point real value with two places after the decimal point.
-
+```code
    WPn -- set primary waveform n
    FPf -- set primary channel frequency f
    OPf -- set primary channel offset
@@ -100,7 +97,7 @@ and "f" denotes a fixed point real value with two places after the decimal point
 
    GTn -- go to line n of the script
    HL  -- halt.  Turn off remote control of the FS3200S. 
-
+```
 Note that there is no "conditional branching" capability:  no "If x then y" sort
 of commands.  A script execution ends when an eror is detected or a comment line
 is encountered.
