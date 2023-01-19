@@ -8,9 +8,9 @@ A Library and GUI to Control a FeelTech FY3200S Signal Generator for Linux using
 - Some changes in UI Layout
 
 
-![Screenshot](ControlTab.png)
-![Screenshot](ARbWaveTab.png)
-![Screenshot](ScriptTab.png)
+![Screenshot](controltab.png)
+![Screenshot](awgtab.png)
+![Screenshot](scripttab.png)
 
 This is a control program and library of control functions for the FeelTech
 FYS3200S Dual Channel signal generator for Linux, written using Lazarus/Free Pascal.
