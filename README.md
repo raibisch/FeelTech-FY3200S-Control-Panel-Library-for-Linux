@@ -119,4 +119,4 @@ always preceeded by a semicolon, can be appended to the end of any line, or
 after the last line containing a command (commands must always begin on the
 first line of the script).
 
-(FY3200S is the Linux executable for this program.)
+(the file 'FY3200S' is the Linux executable for this program.)
