@@ -1,0 +1,1444 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <Component>
+    <component name="FMain" class="TFMain">
+      <properties>
+        <integer name="Left" value="1918"/>
+        <integer name="Height" value="896"/>
+        <integer name="Top" value="186"/>
+        <integer name="Width" value="365"/>
+        <integer name="HorzScrollBar.Page" value="369"/>
+        <integer name="VertScrollBar.Page" value="293"/>
+        <ident name="ActiveControl" value="PageControl1"/>
+        <string name="Caption" value="FY3200S Control"/>
+        <integer name="ClientHeight" value="896"/>
+        <integer name="ClientWidth" value="365"/>
+        <string name="LCLVersion" value="2.2.0.4"/>
+      </properties>
+      <children>
+        <component name="PageControl1" class="TPageControl">
+          <properties>
+            <integer name="Left" value="8"/>
+            <integer name="Height" value="875"/>
+            <integer name="Top" value="0"/>
+            <integer name="Width" value="344"/>
+            <ident name="ActivePage" value="TabSheet1"/>
+            <integer name="TabIndex" value="0"/>
+            <integer name="TabOrder" value="0"/>
+          </properties>
+          <children>
+            <component name="TabSheet1" class="TTabSheet">
+              <properties>
+                <string name="Caption" value="Control"/>
+                <integer name="ClientHeight" value="845"/>
+                <integer name="ClientWidth" value="334"/>
+                <boolean name="ParentShowHint" value="false"/>
+              </properties>
+              <children>
+                <component name="GBCh1" class="TGroupBox">
+                  <properties>
+                    <integer name="Left" value="0"/>
+                    <integer name="Height" value="136"/>
+                    <integer name="Top" value="0"/>
+                    <integer name="Width" value="336"/>
+                    <string name="Caption" value="Ch1"/>
+                    <integer name="ClientHeight" value="118"/>
+                    <integer name="ClientWidth" value="334"/>
+                    <ident name="Color" value="clScrollBar"/>
+                    <integer name="Font.Height" value="-13"/>
+                    <string name="Font.Name" value="Sans"/>
+                    <boolean name="ParentBackground" value="false"/>
+                    <boolean name="ParentColor" value="false"/>
+                    <boolean name="ParentFont" value="false"/>
+                    <integer name="TabOrder" value="0"/>
+                  </properties>
+                  <children>
+                    <component name="CBWaveform1" class="TComboBox">
+                      <properties>
+                        <integer name="Left" value="9"/>
+                        <integer name="Height" value="34"/>
+                        <integer name="Top" value="12"/>
+                        <integer name="Width" value="117"/>
+                        <integer name="ItemHeight" value="0"/>
+                        <integer name="ItemIndex" value="3"/>
+                        <list>
+                          <string value="Sine"/>
+                          <string value="Square"/>
+                          <string value="Pulse"/>
+                          <string value="Triangle"/>
+                          <string value="Saw"/>
+                          <string value="SawNeg"/>
+                          <string value="DC"/>
+                          <string value="Lorentz "/>
+                          <string value="MTone"/>
+                          <string value="Noise"/>
+                          <string value="EKG"/>
+                          <string value="Trap"/>
+                          <string value="Sinc"/>
+                          <string value="NPulse"/>
+                          <string value="Gause"/>
+                          <string value="AM"/>
+                          <string value="FM"/>
+                          <string value="ARB1"/>
+                          <string value="ARB2"/>
+                          <string value="ARB3"/>
+                          <string value="ARB4"/>
+                        </list>
+                        <integer name="TabOrder" value="0"/>
+                        <string name="Text" value="Triangle"/>
+                      </properties>
+                    </component>
+                    <component name="EFreq1" class="TEdit">
+                      <properties>
+                        <integer name="Left" value="9"/>
+                        <integer name="Height" value="34"/>
+                        <string name="Hint" value="set Frequency"/>
+                        <integer name="Top" value="72"/>
+                        <integer name="Width" value="111"/>
+                        <ident name="HelpType" value="htKeyword"/>
+                        <string name="HelpKeyword" value="set Frequency"/>
+                        <boolean name="ParentShowHint" value="false"/>
+                        <boolean name="ShowHint" value="true"/>
+                        <integer name="TabOrder" value="1"/>
+                        <string name="Text" value="5.0"/>
+                      </properties>
+                    </component>
+                    <component name="EAmp1" class="TEdit">
+                      <properties>
+                        <integer name="Left" value="128"/>
+                        <integer name="Height" value="34"/>
+                        <integer name="Top" value="12"/>
+                        <integer name="Width" value="84"/>
+                        <integer name="TabOrder" value="2"/>
+                        <string name="Text" value="4.00"/>
+                      </properties>
+                    </component>
+                    <component name="LWaveform1" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="10"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="-4"/>
+                        <integer name="Width" value="57"/>
+                        <string name="Caption" value="Waveform"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="LFreq1" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="9"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="56"/>
+                        <integer name="Width" value="27"/>
+                        <string name="Caption" value="Freq."/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="LAmp1" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="129"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="-4"/>
+                        <integer name="Width" value="42"/>
+                        <string name="Caption" value="Amp[V]"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="LOfs1" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="217"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="-2"/>
+                        <integer name="Width" value="39"/>
+                        <string name="Caption" value="Offs[V]"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="EOfs1" class="TEdit">
+                      <properties>
+                        <integer name="Left" value="216"/>
+                        <integer name="Height" value="34"/>
+                        <integer name="Top" value="12"/>
+                        <integer name="Width" value="53"/>
+                        <integer name="TabOrder" value="3"/>
+                        <string name="Text" value="0.00"/>
+                      </properties>
+                    </component>
+                    <component name="CBFscale1" class="TComboBox">
+                      <properties>
+                        <integer name="Left" value="128"/>
+                        <integer name="Height" value="34"/>
+                        <integer name="Top" value="72"/>
+                        <integer name="Width" value="82"/>
+                        <integer name="ItemHeight" value="0"/>
+                        <integer name="ItemIndex" value="1"/>
+                        <list>
+                          <string value="Hz"/>
+                          <string value="KHz"/>
+                          <string value="MHz"/>
+                        </list>
+                        <integer name="TabOrder" value="4"/>
+                        <string name="Text" value="KHz"/>
+                      </properties>
+                    </component>
+                    <component name="LDutyCycle1" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="273"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="-4"/>
+                        <integer name="Width" value="44"/>
+                        <string name="Caption" value="Duty[%]"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="EDC1" class="TEdit">
+                      <properties>
+                        <integer name="Left" value="272"/>
+                        <integer name="Height" value="34"/>
+                        <integer name="Top" value="12"/>
+                        <integer name="Width" value="51"/>
+                        <integer name="TabOrder" value="5"/>
+                        <string name="Text" value="50"/>
+                      </properties>
+                    </component>
+                    <component name="ComboBoxWheelFactor" class="TComboBox">
+                      <properties>
+                        <integer name="Left" value="217"/>
+                        <integer name="Height" value="34"/>
+                        <integer name="Top" value="72"/>
+                        <integer name="Width" value="108"/>
+                        <integer name="ItemHeight" value="0"/>
+                        <integer name="TabOrder" value="6"/>
+                        <string name="Text" value="x1"/>
+                        <string name="TextHint" value="MouseWheel Factor"/>
+                      </properties>
+                    </component>
+                  </children>
+                </component>
+                <component name="GBCh2" class="TGroupBox">
+                  <properties>
+                    <integer name="Left" value="4"/>
+                    <integer name="Height" value="131"/>
+                    <integer name="Top" value="136"/>
+                    <integer name="Width" value="332"/>
+                    <string name="Caption" value="Ch2"/>
+                    <integer name="ClientHeight" value="114"/>
+                    <integer name="ClientWidth" value="330"/>
+                    <ident name="Color" value="clScrollBar"/>
+                    <boolean name="ParentBackground" value="false"/>
+                    <boolean name="ParentColor" value="false"/>
+                    <integer name="TabOrder" value="1"/>
+                  </properties>
+                  <children>
+                    <component name="CBWaveform2" class="TComboBox">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="5"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="13"/>
+                        <integer name="Width" value="110"/>
+                        <integer name="ItemHeight" value="0"/>
+                        <integer name="ItemIndex" value="2"/>
+                        <list>
+                          <string value="Sine"/>
+                          <string value="Square"/>
+                          <string value="Triangle"/>
+                          <string value="STW"/>
+                          <string value="NSTW"/>
+                          <string value="DC"/>
+                          <string value="Lorents"/>
+                          <string value="Multi"/>
+                          <string value="Noise"/>
+                          <string value="EKG"/>
+                          <string value="Trap"/>
+                          <string value="Sinc"/>
+                          <string value="Pulse"/>
+                          <string value="Gauss"/>
+                          <string value="AM"/>
+                          <string value="FM"/>
+                          <string value="ARB1"/>
+                          <string value="ARB2"/>
+                          <string value="ARB3"/>
+                          <string value="ARB4"/>
+                        </list>
+                        <integer name="TabOrder" value="0"/>
+                        <string name="Text" value="Triangle"/>
+                      </properties>
+                    </component>
+                    <component name="EFreq2" class="TEdit">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="34"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="43"/>
+                        <integer name="Width" value="104"/>
+                        <ident name="DragMode" value="dmAutomatic"/>
+                        <integer name="TabOrder" value="1"/>
+                        <string name="Text" value="10.0"/>
+                      </properties>
+                    </component>
+                    <component name="EAmp2" class="TEdit">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="146"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="13"/>
+                        <integer name="Width" value="78"/>
+                        <ident name="Color" value="clAqua"/>
+                        <integer name="TabOrder" value="2"/>
+                        <string name="Text" value="4"/>
+                      </properties>
+                    </component>
+                    <component name="LWaveform2" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="5"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="0"/>
+                        <integer name="Width" value="31"/>
+                        <string name="Caption" value="Wave"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="LFreq2" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="5"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="50"/>
+                        <integer name="Width" value="27"/>
+                        <string name="Caption" value="Freq."/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="LAmp2" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="149"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="0"/>
+                        <integer name="Width" value="29"/>
+                        <string name="Caption" value="Amp."/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="LOfs2" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="243"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="0"/>
+                        <integer name="Width" value="22"/>
+                        <string name="Caption" value="Ofs."/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="EOfs2" class="TEdit">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="226"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="13"/>
+                        <integer name="Width" value="90"/>
+                        <integer name="TabOrder" value="3"/>
+                        <string name="Text" value="0"/>
+                      </properties>
+                    </component>
+                    <component name="CBFscale2" class="TComboBox">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="148"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="42"/>
+                        <integer name="Width" value="78"/>
+                        <integer name="ItemHeight" value="0"/>
+                        <integer name="ItemIndex" value="1"/>
+                        <list>
+                          <string value="Hz"/>
+                          <string value="KHz"/>
+                          <string value="MHz"/>
+                        </list>
+                        <integer name="TabOrder" value="4"/>
+                        <string name="Text" value="KHz"/>
+                      </properties>
+                    </component>
+                    <component name="LDutyCycle2" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="5"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="78"/>
+                        <integer name="Width" value="26"/>
+                        <string name="Caption" value="Duty"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="EDC2" class="TEdit">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="34"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="72"/>
+                        <integer name="Width" value="59"/>
+                        <integer name="TabOrder" value="5"/>
+                        <string name="Text" value="50"/>
+                      </properties>
+                    </component>
+                    <component name="LPhz" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="128"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="78"/>
+                        <integer name="Width" value="20"/>
+                        <string name="Caption" value="Phs"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="EPhz" class="TEdit">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="149"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="72"/>
+                        <integer name="Width" value="62"/>
+                        <integer name="TabOrder" value="6"/>
+                        <string name="Text" value="180"/>
+                      </properties>
+                    </component>
+                  </children>
+                </component>
+                <component name="GBSweep" class="TGroupBox">
+                  <properties>
+                    <integer name="Left" value="0"/>
+                    <integer name="Height" value="144"/>
+                    <integer name="Top" value="272"/>
+                    <integer name="Width" value="332"/>
+                    <string name="Caption" value="Sweep"/>
+                    <integer name="ClientHeight" value="127"/>
+                    <integer name="ClientWidth" value="330"/>
+                    <ident name="Color" value="clScrollBar"/>
+                    <boolean name="ParentBackground" value="false"/>
+                    <boolean name="ParentColor" value="false"/>
+                    <integer name="TabOrder" value="2"/>
+                  </properties>
+                  <children>
+                    <component name="CBMode" class="TComboBox">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="43"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="0"/>
+                        <integer name="Width" value="67"/>
+                        <integer name="ItemHeight" value="0"/>
+                        <integer name="ItemIndex" value="0"/>
+                        <list>
+                          <string value="Lin"/>
+                          <string value="Log"/>
+                        </list>
+                        <integer name="TabOrder" value="0"/>
+                        <string name="Text" value="Lin"/>
+                      </properties>
+                    </component>
+                    <component name="EStartFreq" class="TEdit">
+                      <properties>
+                        <integer name="Tag" value="2"/>
+                        <integer name="Left" value="43"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="32"/>
+                        <integer name="Width" value="104"/>
+                        <integer name="TabOrder" value="1"/>
+                        <string name="Text" value="100"/>
+                      </properties>
+                    </component>
+                    <component name="ESweepTIme" class="TEdit">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="150"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="0"/>
+                        <integer name="Width" value="45"/>
+                        <integer name="TabOrder" value="2"/>
+                        <string name="Text" value="10"/>
+                      </properties>
+                    </component>
+                    <component name="LMode" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="8"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="5"/>
+                        <integer name="Width" value="30"/>
+                        <string name="Caption" value="Mode"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="LStartFreq" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="8"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="35"/>
+                        <integer name="Width" value="27"/>
+                        <string name="Caption" value="Start"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="LSweepTime" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="116"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="5"/>
+                        <integer name="Width" value="27"/>
+                        <string name="Caption" value="Time"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="CBStartFreq" class="TComboBox">
+                      <properties>
+                        <integer name="Tag" value="2"/>
+                        <integer name="Left" value="146"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="32"/>
+                        <integer name="Width" value="127"/>
+                        <integer name="ItemHeight" value="0"/>
+                        <integer name="ItemIndex" value="0"/>
+                        <list>
+                          <string value="Hz"/>
+                          <string value="KHz"/>
+                          <string value="MHz"/>
+                        </list>
+                        <integer name="TabOrder" value="3"/>
+                        <string name="Text" value="Hz"/>
+                      </properties>
+                    </component>
+                    <component name="LStopFreq" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="8"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="65"/>
+                        <integer name="Width" value="25"/>
+                        <string name="Caption" value="Stop"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="EStopFreq" class="TEdit">
+                      <properties>
+                        <integer name="Tag" value="3"/>
+                        <integer name="Left" value="43"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="62"/>
+                        <integer name="Width" value="104"/>
+                        <integer name="TabOrder" value="4"/>
+                        <string name="Text" value="10.0"/>
+                      </properties>
+                    </component>
+                    <component name="CBStopFreq" class="TComboBox">
+                      <properties>
+                        <integer name="Tag" value="3"/>
+                        <integer name="Left" value="146"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="62"/>
+                        <integer name="Width" value="129"/>
+                        <integer name="ItemHeight" value="0"/>
+                        <integer name="ItemIndex" value="1"/>
+                        <list>
+                          <string value="Hz"/>
+                          <string value="KHz"/>
+                          <string value="MHz"/>
+                        </list>
+                        <integer name="TabOrder" value="5"/>
+                        <string name="Text" value="KHz"/>
+                      </properties>
+                    </component>
+                    <component name="LSweepTime1" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="201"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="5"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="Sec."/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="BSweepStart" class="TButton">
+                      <properties>
+                        <integer name="Left" value="40"/>
+                        <integer name="Height" value="27"/>
+                        <integer name="Top" value="93"/>
+                        <integer name="Width" value="104"/>
+                        <string name="Caption" value="Start"/>
+                        <integer name="TabOrder" value="6"/>
+                      </properties>
+                    </component>
+                    <component name="BSweepPause" class="TButton">
+                      <properties>
+                        <integer name="Left" value="144"/>
+                        <integer name="Height" value="25"/>
+                        <integer name="Top" value="96"/>
+                        <integer name="Width" value="96"/>
+                        <string name="Caption" value="Pause"/>
+                        <integer name="TabOrder" value="7"/>
+                      </properties>
+                    </component>
+                  </children>
+                </component>
+                <component name="GBTrigger" class="TGroupBox">
+                  <properties>
+                    <integer name="Left" value="4"/>
+                    <integer name="Height" value="72"/>
+                    <integer name="Top" value="416"/>
+                    <integer name="Width" value="332"/>
+                    <string name="Caption" value="Trigger"/>
+                    <integer name="ClientHeight" value="55"/>
+                    <integer name="ClientWidth" value="330"/>
+                    <ident name="Color" value="clScrollBar"/>
+                    <boolean name="ParentBackground" value="false"/>
+                    <boolean name="ParentColor" value="false"/>
+                    <integer name="TabOrder" value="3"/>
+                  </properties>
+                  <children>
+                    <component name="LTrigSource" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="8"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="4"/>
+                        <integer name="Width" value="38"/>
+                        <string name="Caption" value="Source"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="CBTrigSource" class="TComboBox">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="8"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="20"/>
+                        <integer name="Width" value="106"/>
+                        <integer name="ItemHeight" value="0"/>
+                        <integer name="ItemIndex" value="0"/>
+                        <list>
+                          <string value="Man"/>
+                          <string value="Ext"/>
+                          <string value="Ch2"/>
+                        </list>
+                        <integer name="TabOrder" value="0"/>
+                        <string name="Text" value="Man"/>
+                      </properties>
+                    </component>
+                    <component name="LCount" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="88"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="4"/>
+                        <integer name="Width" value="67"/>
+                        <string name="Caption" value="Cycle Count"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                    <component name="ETrigCycles" class="TEdit">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="121"/>
+                        <integer name="Height" value="33"/>
+                        <integer name="Top" value="20"/>
+                        <integer name="Width" value="195"/>
+                        <integer name="TabOrder" value="1"/>
+                        <string name="Text" value="10"/>
+                      </properties>
+                    </component>
+                  </children>
+                </component>
+                <component name="GBPulse" class="TGroupBox">
+                  <properties>
+                    <integer name="Left" value="0"/>
+                    <integer name="Height" value="52"/>
+                    <integer name="Top" value="488"/>
+                    <integer name="Width" value="332"/>
+                    <string name="Caption" value="Pulse Width"/>
+                    <integer name="ClientHeight" value="34"/>
+                    <integer name="ClientWidth" value="330"/>
+                    <ident name="Color" value="clScrollBar"/>
+                    <integer name="Font.Height" value="-13"/>
+                    <string name="Font.Name" value="Sans"/>
+                    <boolean name="ParentBackground" value="false"/>
+                    <boolean name="ParentColor" value="false"/>
+                    <boolean name="ParentFont" value="false"/>
+                    <integer name="TabOrder" value="4"/>
+                  </properties>
+                  <children>
+                    <component name="EPulseWidth" class="TEdit">
+                      <properties>
+                        <integer name="Left" value="8"/>
+                        <integer name="Height" value="34"/>
+                        <integer name="Top" value="2"/>
+                        <integer name="Width" value="88"/>
+                        <integer name="TabOrder" value="0"/>
+                        <string name="Text" value="5.0"/>
+                      </properties>
+                    </component>
+                    <component name="CBTScale" class="TComboBox">
+                      <properties>
+                        <integer name="Left" value="128"/>
+                        <integer name="Height" value="34"/>
+                        <integer name="Top" value="0"/>
+                        <integer name="Width" value="63"/>
+                        <integer name="ItemHeight" value="0"/>
+                        <integer name="ItemIndex" value="0"/>
+                        <list>
+                          <string value="ns"/>
+                          <string value="us"/>
+                          <string value="ms"/>
+                          <string value="Sec"/>
+                        </list>
+                        <integer name="TabOrder" value="1"/>
+                        <string name="Text" value="ns"/>
+                      </properties>
+                    </component>
+                  </children>
+                </component>
+                <component name="GBSaveLoad" class="TGroupBox">
+                  <properties>
+                    <integer name="Left" value="4"/>
+                    <integer name="Height" value="128"/>
+                    <integer name="Top" value="640"/>
+                    <integer name="Width" value="324"/>
+                    <string name="Caption" value="Mem"/>
+                    <integer name="ClientHeight" value="111"/>
+                    <integer name="ClientWidth" value="322"/>
+                    <ident name="Color" value="clScrollBar"/>
+                    <boolean name="ParentBackground" value="false"/>
+                    <boolean name="ParentColor" value="false"/>
+                    <integer name="TabOrder" value="5"/>
+                  </properties>
+                  <children>
+                    <component name="PM0" class="TPanel">
+                      <properties>
+                        <integer name="Left" value="7"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="1"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="0"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="0"/>
+                      </properties>
+                    </component>
+                    <component name="PM1" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="1"/>
+                        <integer name="Left" value="35"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="1"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="1"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="1"/>
+                      </properties>
+                    </component>
+                    <component name="PM2" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="2"/>
+                        <integer name="Left" value="63"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="1"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="2"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="2"/>
+                      </properties>
+                    </component>
+                    <component name="PM3" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="3"/>
+                        <integer name="Left" value="91"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="1"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="3"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="3"/>
+                      </properties>
+                    </component>
+                    <component name="PM4" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="4"/>
+                        <integer name="Left" value="119"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="1"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="4"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="4"/>
+                      </properties>
+                    </component>
+                    <component name="PM5" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="5"/>
+                        <integer name="Left" value="147"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="1"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="5"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="5"/>
+                      </properties>
+                    </component>
+                    <component name="PM6" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="6"/>
+                        <integer name="Left" value="175"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="1"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="6"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="6"/>
+                      </properties>
+                    </component>
+                    <component name="PM7" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="7"/>
+                        <integer name="Left" value="202"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="1"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="7"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="7"/>
+                      </properties>
+                    </component>
+                    <component name="PM8" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="8"/>
+                        <integer name="Left" value="7"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="8"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="8"/>
+                      </properties>
+                    </component>
+                    <component name="PM9" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="9"/>
+                        <integer name="Left" value="35"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="9"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="9"/>
+                      </properties>
+                    </component>
+                    <component name="PM10" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="10"/>
+                        <integer name="Left" value="63"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="10"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="10"/>
+                      </properties>
+                    </component>
+                    <component name="PM11" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="11"/>
+                        <integer name="Left" value="91"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="11"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="11"/>
+                      </properties>
+                    </component>
+                    <component name="PM12" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="12"/>
+                        <integer name="Left" value="119"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="12"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="12"/>
+                      </properties>
+                    </component>
+                    <component name="PM13" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="13"/>
+                        <integer name="Left" value="147"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="13"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="13"/>
+                      </properties>
+                    </component>
+                    <component name="PM15" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="15"/>
+                        <integer name="Left" value="202"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="15"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="14"/>
+                      </properties>
+                    </component>
+                    <component name="PM16" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="16"/>
+                        <integer name="Left" value="8"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="55"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="16"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="15"/>
+                      </properties>
+                    </component>
+                    <component name="PM17" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="17"/>
+                        <integer name="Left" value="35"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="55"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="17"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="16"/>
+                      </properties>
+                    </component>
+                    <component name="PM18" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="18"/>
+                        <integer name="Left" value="63"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="55"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="18"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="17"/>
+                      </properties>
+                    </component>
+                    <component name="PM19" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="19"/>
+                        <integer name="Left" value="91"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="55"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="19"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="18"/>
+                      </properties>
+                    </component>
+                    <component name="PMF" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="20"/>
+                        <integer name="Left" value="121"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="56"/>
+                        <integer name="Width" value="104"/>
+                        <string name="Caption" value="File"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="19"/>
+                      </properties>
+                    </component>
+                    <component name="PM14" class="TPanel">
+                      <properties>
+                        <integer name="Tag" value="13"/>
+                        <integer name="Left" value="175"/>
+                        <integer name="Height" value="23"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="23"/>
+                        <string name="Caption" value="14"/>
+                        <ident name="Color" value="clSilver"/>
+                        <boolean name="ParentColor" value="false"/>
+                        <integer name="TabOrder" value="20"/>
+                      </properties>
+                    </component>
+                    <component name="Label1" class="TLabel">
+                      <properties>
+                        <integer name="Left" value="7"/>
+                        <integer name="Height" value="14"/>
+                        <integer name="Top" value="81"/>
+                        <integer name="Width" value="172"/>
+                        <string name="Caption" value="Click to load, Shift click to save."/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                      </properties>
+                    </component>
+                  </children>
+                </component>
+                <component name="GBCounter" class="TGroupBox">
+                  <properties>
+                    <integer name="Left" value="0"/>
+                    <integer name="Height" value="80"/>
+                    <integer name="Top" value="544"/>
+                    <integer name="Width" value="332"/>
+                    <string name="Caption" value="Counter"/>
+                    <integer name="ClientHeight" value="62"/>
+                    <integer name="ClientWidth" value="330"/>
+                    <ident name="Color" value="clScrollBar"/>
+                    <integer name="Font.Height" value="-13"/>
+                    <string name="Font.Name" value="Sans"/>
+                    <boolean name="ParentBackground" value="false"/>
+                    <boolean name="ParentColor" value="false"/>
+                    <boolean name="ParentFont" value="false"/>
+                    <integer name="TabOrder" value="6"/>
+                  </properties>
+                  <children>
+                    <component name="ECounter" class="TEdit">
+                      <properties>
+                        <integer name="Left" value="8"/>
+                        <integer name="Height" value="34"/>
+                        <integer name="Top" value="2"/>
+                        <integer name="Width" value="219"/>
+                        <integer name="TabOrder" value="0"/>
+                      </properties>
+                    </component>
+                    <component name="BCtrClr" class="TButton">
+                      <properties>
+                        <integer name="Left" value="8"/>
+                        <integer name="Height" value="25"/>
+                        <integer name="Top" value="32"/>
+                        <integer name="Width" value="50"/>
+                        <string name="Caption" value="Clr"/>
+                        <integer name="TabOrder" value="1"/>
+                      </properties>
+                    </component>
+                    <component name="BCtrExtCnt" class="TButton">
+                      <properties>
+                        <integer name="Left" value="62"/>
+                        <integer name="Height" value="25"/>
+                        <integer name="Top" value="32"/>
+                        <integer name="Width" value="50"/>
+                        <string name="Caption" value="Cnt"/>
+                        <integer name="TabOrder" value="2"/>
+                      </properties>
+                    </component>
+                    <component name="BCtrExtF" class="TButton">
+                      <properties>
+                        <integer name="Left" value="116"/>
+                        <integer name="Height" value="25"/>
+                        <integer name="Top" value="32"/>
+                        <integer name="Width" value="50"/>
+                        <string name="Caption" value="ExtF"/>
+                        <integer name="TabOrder" value="3"/>
+                      </properties>
+                    </component>
+                    <component name="BCtrCh1F" class="TButton">
+                      <properties>
+                        <integer name="Left" value="170"/>
+                        <integer name="Height" value="25"/>
+                        <integer name="Top" value="32"/>
+                        <integer name="Width" value="50"/>
+                        <string name="Caption" value="Ch1F"/>
+                        <integer name="TabOrder" value="4"/>
+                      </properties>
+                    </component>
+                  </children>
+                </component>
+                <component name="ComboBoxSerPort" class="TComboBox">
+                  <properties>
+                    <integer name="Left" value="16"/>
+                    <integer name="Height" value="33"/>
+                    <integer name="Top" value="800"/>
+                    <integer name="Width" value="168"/>
+                    <integer name="ItemHeight" value="0"/>
+                    <list>
+                      <string value="/dev/ttyUSB0"/>
+                      <string value="/dev/ttyUSB1"/>
+                      <string value="/dev/ttyUSB2"/>
+                      <string value="/dev/ttyUSB3"/>
+                      <string value="/dev/ttyUSB4"/>
+                    </list>
+                    <integer name="TabOrder" value="7"/>
+                    <string name="Text" value="/dev/ttyUSB0"/>
+                  </properties>
+                </component>
+                <component name="Label3" class="TLabel">
+                  <properties>
+                    <integer name="Left" value="16"/>
+                    <integer name="Height" value="16"/>
+                    <integer name="Top" value="784"/>
+                    <integer name="Width" value="66"/>
+                    <string name="Caption" value="Serial-Port:"/>
+                  </properties>
+                </component>
+                <component name="BtnSerStart" class="TButton">
+                  <properties>
+                    <integer name="Left" value="188"/>
+                    <integer name="Height" value="32"/>
+                    <integer name="Top" value="801"/>
+                    <integer name="Width" value="128"/>
+                    <string name="Caption" value="Open Port"/>
+                    <ident name="Color" value="clYellow"/>
+                    <integer name="TabOrder" value="8"/>
+                  </properties>
+                </component>
+                <component name="LblConnect" class="TLabel">
+                  <properties>
+                    <integer name="Left" value="200"/>
+                    <integer name="Height" value="17"/>
+                    <integer name="Top" value="784"/>
+                    <integer name="Width" value="105"/>
+                    <string name="Caption" value="not connected"/>
+                    <integer name="Font.Height" value="-13"/>
+                    <string name="Font.Name" value="Sans"/>
+                    <set name="Font.Style" value="fsBold"/>
+                    <boolean name="ParentFont" value="false"/>
+                  </properties>
+                </component>
+              </children>
+            </component>
+            <component name="TabSheet2" class="TTabSheet">
+              <properties>
+                <string name="Caption" value="ARB Wave"/>
+                <integer name="ClientHeight" value="845"/>
+                <integer name="ClientWidth" value="334"/>
+              </properties>
+              <children>
+                <component name="BArbRun" class="TButton">
+                  <properties>
+                    <integer name="Left" value="96"/>
+                    <integer name="Height" value="25"/>
+                    <integer name="Top" value="136"/>
+                    <integer name="Width" value="75"/>
+                    <string name="Caption" value="Store"/>
+                    <integer name="TabOrder" value="0"/>
+                  </properties>
+                </component>
+                <component name="RGMemory" class="TRadioGroup">
+                  <properties>
+                    <integer name="Left" value="7"/>
+                    <integer name="Height" value="50"/>
+                    <integer name="Top" value="0"/>
+                    <integer name="Width" value="230"/>
+                    <boolean name="AutoFill" value="true"/>
+                    <string name="Caption" value="Define Arbitrary Wave"/>
+                    <integer name="ChildSizing.LeftRightSpacing" value="6"/>
+                    <ident name="ChildSizing.EnlargeHorizontal" value="crsHomogenousChildResize"/>
+                    <ident name="ChildSizing.EnlargeVertical" value="crsHomogenousChildResize"/>
+                    <ident name="ChildSizing.ShrinkHorizontal" value="crsScaleChilds"/>
+                    <ident name="ChildSizing.ShrinkVertical" value="crsScaleChilds"/>
+                    <ident name="ChildSizing.Layout" value="cclTopToBottomThenLeftToRight"/>
+                    <integer name="ChildSizing.ControlsPerLine" value="1"/>
+                    <integer name="ClientHeight" value="33"/>
+                    <integer name="ClientWidth" value="228"/>
+                    <ident name="ColumnLayout" value="clVerticalThenHorizontal"/>
+                    <integer name="Columns" value="4"/>
+                    <integer name="Font.Height" value="-13"/>
+                    <string name="Font.Name" value="Sans"/>
+                    <integer name="ItemIndex" value="0"/>
+                    <list>
+                      <string value="1"/>
+                      <string value="2"/>
+                      <string value="3"/>
+                      <string value="4 "/>
+                    </list>
+                    <boolean name="ParentFont" value="false"/>
+                    <integer name="TabOrder" value="1"/>
+                  </properties>
+                </component>
+                <component name="GBFileSelect" class="TGroupBox">
+                  <properties>
+                    <integer name="Left" value="8"/>
+                    <integer name="Height" value="73"/>
+                    <integer name="Top" value="56"/>
+                    <integer name="Width" value="235"/>
+                    <string name="Caption" value="From File"/>
+                    <integer name="ClientHeight" value="56"/>
+                    <integer name="ClientWidth" value="233"/>
+                    <integer name="TabOrder" value="2"/>
+                  </properties>
+                  <children>
+                    <component name="EARBFile" class="TEdit">
+                      <properties>
+                        <integer name="Left" value="-1"/>
+                        <integer name="Height" value="31"/>
+                        <integer name="Top" value="0"/>
+                        <integer name="Width" value="231"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                        <integer name="TabOrder" value="0"/>
+                      </properties>
+                    </component>
+                    <component name="BWaveLoad" class="TButton">
+                      <properties>
+                        <integer name="Left" value="0"/>
+                        <integer name="Height" value="20"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="58"/>
+                        <string name="Caption" value="Load"/>
+                        <integer name="TabOrder" value="1"/>
+                      </properties>
+                    </component>
+                  </children>
+                </component>
+                <component name="SGArb" class="TStringGrid">
+                  <properties>
+                    <integer name="Left" value="40"/>
+                    <integer name="Height" value="624"/>
+                    <integer name="Top" value="168"/>
+                    <integer name="Width" value="280"/>
+                    <integer name="ColCount" value="2"/>
+                    <integer name="DefaultColWidth" value="96"/>
+                    <integer name="DefaultRowHeight" value="15"/>
+                    <integer name="Font.Height" value="-11"/>
+                    <string name="Font.Name" value="Sans"/>
+                    <set name="Options" value="goFixedVertLine,goFixedHorzLine,goVertLine,goHorzLine,goRangeSelect,goColSizing,goEditing,goSmoothScroll"/>
+                    <boolean name="ParentFont" value="false"/>
+                    <integer name="RowCount" value="2049"/>
+                    <ident name="ScrollBars" value="ssAutoVertical"/>
+                    <integer name="TabOrder" value="3"/>
+                  </properties>
+                </component>
+                <component name="Label2" class="TLabel">
+                  <properties>
+                    <integer name="Left" value="7"/>
+                    <integer name="Height" value="16"/>
+                    <integer name="Top" value="808"/>
+                    <integer name="Width" value="41"/>
+                    <string name="Caption" value="Label2"/>
+                  </properties>
+                </component>
+              </children>
+            </component>
+            <component name="TabSheet3" class="TTabSheet">
+              <properties>
+                <string name="Caption" value="Script"/>
+                <integer name="ClientHeight" value="845"/>
+                <integer name="ClientWidth" value="334"/>
+              </properties>
+              <children>
+                <component name="BScrRun" class="TButton">
+                  <properties>
+                    <integer name="Left" value="0"/>
+                    <integer name="Height" value="20"/>
+                    <integer name="Top" value="80"/>
+                    <integer name="Width" value="49"/>
+                    <string name="Caption" value="Run"/>
+                    <integer name="TabOrder" value="0"/>
+                  </properties>
+                </component>
+                <component name="BScrStep" class="TButton">
+                  <properties>
+                    <integer name="Left" value="124"/>
+                    <integer name="Height" value="20"/>
+                    <integer name="Top" value="80"/>
+                    <integer name="Width" value="49"/>
+                    <string name="Caption" value="Step"/>
+                    <integer name="TabOrder" value="1"/>
+                  </properties>
+                </component>
+                <component name="BScrPause" class="TButton">
+                  <properties>
+                    <integer name="Left" value="62"/>
+                    <integer name="Height" value="20"/>
+                    <integer name="Top" value="80"/>
+                    <integer name="Width" value="49"/>
+                    <string name="Caption" value="Pause"/>
+                    <integer name="TabOrder" value="2"/>
+                  </properties>
+                </component>
+                <component name="EStepTime" class="TEdit">
+                  <properties>
+                    <integer name="Left" value="120"/>
+                    <integer name="Height" value="33"/>
+                    <integer name="Top" value="798"/>
+                    <integer name="Width" value="109"/>
+                    <integer name="TabOrder" value="3"/>
+                    <string name="Text" value="100"/>
+                  </properties>
+                </component>
+                <component name="LStepTime" class="TLabel">
+                  <properties>
+                    <integer name="Left" value="8"/>
+                    <integer name="Height" value="16"/>
+                    <integer name="Top" value="802"/>
+                    <integer name="Width" value="91"/>
+                    <string name="Caption" value="Step Time (Ms):"/>
+                  </properties>
+                </component>
+                <component name="SGScript" class="TStringGrid">
+                  <properties>
+                    <integer name="Left" value="0"/>
+                    <integer name="Height" value="552"/>
+                    <integer name="Top" value="128"/>
+                    <integer name="Width" value="328"/>
+                    <integer name="ColCount" value="2"/>
+                    <integer name="DefaultColWidth" value="200"/>
+                    <integer name="DefaultRowHeight" value="18"/>
+                    <integer name="Font.Height" value="-11"/>
+                    <string name="Font.Name" value="Sans"/>
+                    <set name="Options" value="goFixedVertLine,goFixedHorzLine,goVertLine,goHorzLine,goRangeSelect,goEditing,goSmoothScroll"/>
+                    <boolean name="ParentFont" value="false"/>
+                    <integer name="RowCount" value="501"/>
+                    <ident name="ScrollBars" value="ssBoth"/>
+                    <integer name="TabOrder" value="4"/>
+                    <list>
+                      <integer value="384"/>
+                      <integer value="200"/>
+                    </list>
+                  </properties>
+                </component>
+                <component name="GBScriptFile" class="TGroupBox">
+                  <properties>
+                    <integer name="Left" value="0"/>
+                    <integer name="Height" value="73"/>
+                    <integer name="Top" value="0"/>
+                    <integer name="Width" value="235"/>
+                    <string name="Caption" value="File"/>
+                    <integer name="ClientHeight" value="56"/>
+                    <integer name="ClientWidth" value="233"/>
+                    <integer name="TabOrder" value="5"/>
+                  </properties>
+                  <children>
+                    <component name="EScriptFile" class="TEdit">
+                      <properties>
+                        <integer name="Left" value="0"/>
+                        <integer name="Height" value="31"/>
+                        <integer name="Top" value="1"/>
+                        <integer name="Width" value="231"/>
+                        <integer name="Font.Height" value="-11"/>
+                        <string name="Font.Name" value="Sans"/>
+                        <boolean name="ParentFont" value="false"/>
+                        <integer name="TabOrder" value="0"/>
+                      </properties>
+                    </component>
+                    <component name="BScrLoad" class="TButton">
+                      <properties>
+                        <integer name="Left" value="0"/>
+                        <integer name="Height" value="20"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="58"/>
+                        <string name="Caption" value="Load"/>
+                        <integer name="TabOrder" value="1"/>
+                      </properties>
+                    </component>
+                    <component name="BScrSave" class="TButton">
+                      <properties>
+                        <integer name="Left" value="173"/>
+                        <integer name="Height" value="20"/>
+                        <integer name="Top" value="29"/>
+                        <integer name="Width" value="58"/>
+                        <string name="Caption" value="Save"/>
+                        <integer name="TabOrder" value="2"/>
+                      </properties>
+                    </component>
+                  </children>
+                </component>
+                <component name="BScrReset" class="TButton">
+                  <properties>
+                    <integer name="Left" value="186"/>
+                    <integer name="Height" value="20"/>
+                    <integer name="Top" value="80"/>
+                    <integer name="Width" value="49"/>
+                    <string name="Caption" value="Reset"/>
+                    <integer name="TabOrder" value="6"/>
+                  </properties>
+                </component>
+                <component name="LStep" class="TLabel">
+                  <properties>
+                    <integer name="Left" value="4"/>
+                    <integer name="Height" value="16"/>
+                    <integer name="Top" value="104"/>
+                    <integer name="Width" value="38"/>
+                    <string name="Caption" value="Step 1"/>
+                  </properties>
+                </component>
+              </children>
+            </component>
+          </children>
+        </component>
+        <component name="TreeView1" class="TTreeView">
+          <properties>
+            <integer name="Left" value="848"/>
+            <integer name="Height" value="97"/>
+            <integer name="Top" value="912"/>
+            <integer name="Width" value="121"/>
+            <integer name="TabOrder" value="1"/>
+          </properties>
+        </component>
+        <component name="SaveDialog1" class="TSaveDialog">
+          <properties>
+            <integer name="Left" value="296"/>
+            <integer name="Top" value="600"/>
+          </properties>
+        </component>
+        <component name="OpenDialog1" class="TOpenDialog">
+          <properties>
+            <integer name="FilterIndex" value="0"/>
+            <string name="InitialDir" value="/home/"/>
+            <integer name="Left" value="296"/>
+            <integer name="Top" value="688"/>
+          </properties>
+        </component>
+        <component name="Timer1" class="TTimer">
+          <properties>
+            <boolean name="Enabled" value="false"/>
+            <integer name="Left" value="296"/>
+            <integer name="Top" value="752"/>
+          </properties>
+        </component>
+      </children>
+    </component>
+  </Component>
+</CONFIG>
