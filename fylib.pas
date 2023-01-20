@@ -35,7 +35,7 @@ unit fyLib;
 interface
 
 uses
-  Classes, SysUtils, synaser;
+  Classes, SysUtils, synaser,Dialogs;
 Type
  TChannels  = (CH1, CH2, STARTF, STOPF); {StartF and StopF used in sweep setup.}
 
@@ -68,7 +68,10 @@ Type
 
 
 var
- Ser: TBlockSerial;    {Interface to /dev/ttyUSB0.}
+ Ser: TBlockSerial;    {Interface to serial Port}
+ sTTYPort: shortstring;      { by JG }
+ bTTYPortvalid: boolean;     { by JG }
+
 
  CState: TStateRecord; {Current state of all programmable instrument controls.}
  StateFile: file of TStateRecord; {File of instrument states}
@@ -84,8 +87,11 @@ var
  sReceived: shortstring;
 
 Const
- TimeOut = 50;
+ TimeOut = 60;
  sNoResponse = 'No response.';
+
+{ by JG Serial Port Handling ----------------------------------------------}
+function SerPortOpen(stty: string): boolean;
 
 {============================================================================
  Four procedures that communicate with the instrument using synaSER.
@@ -175,21 +181,26 @@ implementation
  =============================================================================}
 procedure Send(Command: string);
 begin
- Ser.SendString(Command+#10);
+ if (bTTYPortvalid) then
+  Ser.SendString(Command+#10);
 end;
 
 procedure SendByte(b: byte);
 begin
- Ser.SendByte(b);
+ if (bTTYPortvalid) then
+  Ser.SendByte(b);
 end;
 
 function SendWithResponse(Command: string): string;
 var S: String;
 begin
  S := sNoResponse;
- Ser.SendString(Command+#10);
- sleep(50);
- S := Ser.RecvPacket(TimeOut);
+ if (bTTYPortvalid) then
+ begin
+  Ser.SendString(Command+#10);
+  sleep(60);
+  S := Ser.RecvPacket(TimeOut);
+ end;
  result := S
 end;
 
@@ -197,7 +208,8 @@ function  Receive: string;
 Var S: String;
 begin
  S := sNoResponse;
- S := Ser.RecvTerminated(TimeOut,#10);
+ if (bTTYPortvalid) then
+  S := Ser.RecvTerminated(TimeOut,#10);
  result := S;
 end;
 
@@ -463,10 +475,11 @@ end;
    call followed by a "SaveState(n)".  In my case, I rarely use the hardware
    interface to the instrument, since my FY3224S is always teathered to my PC.}
 
-function SaveState(InMemory: integer): boolean;
 {When an instrument state is saved to one of its twenty memories, it is also
 saved in a disk file so that the state can be read by the calling program.  These
 files are named "PM0" ~ "PM19" in the directory "PMFiles."}
+function SaveState(InMemory: integer): boolean;
+
 begin
  if ((InMemory <= 19) and (InMemory >= 0)) then
   begin
@@ -498,16 +511,50 @@ begin
   end
  else result := false;
 end;
-
-Initialization
- {Set up the serial communications channel between the instrument and the
-  PC.  Note the "Ser.LinuxLock := false" line.}
+function SerPortOpen(stty: String): boolean;
+{by JG}
+begin
+ sTTYPort := stty;
  Ser := TBlockSerial.Create;
  Ser.LinuxLock:=false;
- Ser.Connect('/dev/ttyUSB0');
+
+ {  Beispiel aus Internet testet alle Ports durch
+   For i:=0 to 50 Do
+            begin
+            try
+            SHandle:=SerOpen('/dev/ttyUSB'+inttostr(i)+'');
+            SerClose(SHandle);
+            a:=true;
+            except
+            a:=false;
+            end;
+            if a then Combo1.Items.Add('/dev/ttyUSB'+inttostr(i)+'');
+            end;
+ }
+ try
+ Ser.Connect(sTTYPort);
+ Ser.Config(9600,8,'N',1,false,false);
+ result := true;
+ except
+ result := false
+ end;
+end;
+
+Initialization
+ //Set up the serial communications channel between the instrument and the
+ // PC.  Note the "Ser.LinuxLock := false" line.}
+ {
+ sTTYPort := '/dev/ttyUSB2';
+ Ser := TBlockSerial.Create;
+ Ser.LinuxLock:=false;
+ Ser.Connect(sTTYPort);
  if Ser.Handle=INVALID_HANDLE_VALUE then
    raise Exception.Create('Could not open device '+ Ser.Device);
  Ser.Config(9600,8,'N',1,false,false);
+ }
+
+bTTYPortvalid := false;
+bTTYPortvalid := SerPortOpen('/dev/ttyUSB0');
 
 finalization
 {Close the serial communications channel between the instrument and the PC.}

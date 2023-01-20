@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, LResources, Forms, Controls, Graphics, Dialogs,
-  StdCtrls, ExtCtrls, ComCtrls, Grids, {EditBtn,} fyLib;
+  StdCtrls, ExtCtrls, ComCtrls, Grids, {EditBtn,} fyLib, Types;
 
 type
 
@@ -14,16 +14,20 @@ type
 
   TFMain = class(TForm)
     BScrReset: TButton;
+    BtnSerStart: TButton;
     BWaveLoad: TButton;
     BScrRun: TButton;
     BScrLoad: TButton;
     BScrSave: TButton;
     BScrStep: TButton;
     BScrPause: TButton;
+    ComboBoxSerPort: TComboBox;
     EScriptFile: TEdit;
     EStepTime: TEdit;
     GBScriptFile: TGroupBox;
     Label1: TLabel;
+    Label3: TLabel;
+    LblConnect: TLabel;
     LStep: TLabel;
     LStepTime: TLabel;
 
@@ -37,6 +41,8 @@ type
       CBWaveform1: TComboBox;
       EAmp1: TEdit;
       EOfs1: TEdit;
+      EPulseWidth: TEdit;
+      CBTScale: TComboBox;
       EFreq1: TEdit;
       CBFscale1: TComboBox;
       EDC1: TEdit;
@@ -61,7 +67,7 @@ type
       LDutyCycle2: TLabel;
       LWaveform2: TLabel;
 
-     GBSweep: TGroupBox;
+      GBSweep: TGroupBox;
       BSweepPause: TButton;
       BSweepStart: TButton;
       CBMode: TComboBox;
@@ -73,7 +79,6 @@ type
       LMode: TLabel;
       LStartFreq: TLabel;
       LStopFreq: TLabel;
-      LSweepTime: TLabel;
       LSweepTime1: TLabel;
 
      GBTrigger: TGroupBox;
@@ -82,9 +87,6 @@ type
       LCount: TLabel;
       LTrigSource: TLabel;
 
-     GBPulse: TGroupBox;
-      EPulseWidth: TEdit;
-      CBTScale: TComboBox;
 
      GBCounter: TGroupBox;
       BCtrClr: TButton;
@@ -128,6 +130,7 @@ type
 
      Label2: TLabel;
      Timer1: TTimer;
+     TreeView1: TTreeView;
 
     procedure BArbStoreClick(Sender: TObject);
     procedure BCtrClrClick(Sender: TObject);
@@ -140,7 +143,23 @@ type
     procedure BScrRunClick(Sender: TObject);
     procedure BScrSaveClick(Sender: TObject);
     procedure BScrStepClick(Sender: TObject);
+    procedure BtnSerStartClick(Sender: TObject);
     procedure BWaveLoadClick(Sender: TObject);
+    procedure ComboBoxSerPortChange(Sender: TObject);
+    procedure EFreq1Change(Sender: TObject);
+
+    procedure EFreq1MouseWheel(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+
+    procedure EFreq2MouseWheel(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+
+     procedure EAmp1MouseWheel(Sender: TObject; Shift: TShiftState;
+      WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+     procedure EOfs1MouseWheel(Sender: TObject; Shift: TShiftState;
+       WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+
+
     procedure FormCreate(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
 
@@ -160,9 +179,13 @@ type
     procedure CBTrigSourceChange(Sender: TObject);
     procedure ETrigCyclesKeyPress(Sender: TObject; var Key: char);
     procedure FormShow(Sender: TObject);
+    procedure GBCh1Click(Sender: TObject);
+    procedure GBCh2Click(Sender: TObject);
 
     procedure HandlePWChange(Sender: TObject);
     procedure EPulseWidthKeyPress(Sender: TObject; var Key: char);
+    procedure LOfs1Click(Sender: TObject);
+    procedure LOfs2Click(Sender: TObject);
 
     procedure PM0Click(Sender: TObject);
     {Handles all instrument memory load/save actions.}
@@ -183,9 +206,12 @@ type
 
 var
   FMain: TFMain;
-  sRangeError: shortstring = 'out of range.';
+  sRangeError: shortstring = ' out of range!';
 
   SStep: integer = 1;  //Current script step
+
+  ScaleIndex1: integer = 1;  // by JG current ScaleIndex (0=Hz..2=MHz)
+
 
 const
   sNEXTSTEP = 'Next Step: ';
@@ -218,19 +244,42 @@ end;
 procedure TFMain.FormShow(Sender: TObject);
 var S: string;
 {The instrument returns a line-feed terminated model type string if one
- is connected to /dev/ttyUSB0, otherwise response times out.}
+ is connected to /dev/ttyUSBx, otherwise response times out.}
 begin
+ if bTTYPortvalid then
+ begin
+  FMain.BtnSerStart.Enabled := false;
+ end
+ else begin
+   ShowMessage('Ser-Port ' + sTTYPort + ' not valid');
+   FMain.BtnSerStart.Enabled := true;
+   Exit;    { by JG }
+ end;
  S := SendWithResponse('a');
  if S = '' then
   begin
-   ShowMessage('No FT32XXS on ttyUSB0 found.');
-   Halt;
+   ShowMessage('FY32XXS not connected to ' + sTTYPort);
+    FMain.BtnSerStart.Enabled := true;
+   Exit;    { by JG }
   end
  else
-  begin
+ begin
+     FMain.LblConnect.Caption := 'connected';
+     FMain.LblConnect.Color := clMoneyGreen;
+  end;
+
    S[length(S)] := ' ';
    FMain.Caption := S + 'Control'
-  end;
+end;
+
+procedure TFMain.GBCh1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFMain.GBCh2Click(Sender: TObject);
+begin
+
 end;
 
 
@@ -239,8 +288,30 @@ end;
 =============================================================================}
 procedure TFMain.CBWaveform1Change(Sender: TObject);
 begin
-  if  TComboBox(Sender).tag = 0 then  WaveformSet(CH1,CBWaveform1.ItemIndex)
-  else WaveformSet(CH2,CBWaveform2.ItemIndex)
+  if  TComboBox(Sender).tag = 0 then
+   begin
+    WaveformSet(CH1,CBWaveform1.ItemIndex);
+
+    // by JG  disable/enable ununsed controls
+    if (CBWaveform1.ItemIndex = 1) then
+      EDC1.Enabled := true
+    else begin
+      EDC1.Enabled := false;
+    end;
+
+    if (CBWaveform1.ItemIndex = 2) then
+    begin
+       EPulseWidth.Enabled := true;
+       CBTScale.Enabled  := true;
+    end
+    else begin
+       EPulseWidth.Enabled := false;
+       CBTScale.Enabled  := false;
+    end;
+  end
+  else begin
+    WaveformSet(CH2,CBWaveform2.ItemIndex);
+  end;
 end;
 
 {============================================================================
@@ -267,17 +338,208 @@ begin
 end;
 
 procedure TFMain.CBFscale1Change(Sender: TObject);
+var F: double;
 begin
+ F :=  StrToFloat(EFreq1.text);
+ case CBFScale1.ItemIndex of
+  0: if (ScaleIndex1=1) then F:= F*1000;
+  1: begin
+   if (ScaleIndex1=2) then F:= F*1000;
+   if (ScaleIndex1=0)  then F:= F/1000;
+  end;
+  2: if (ScaleIndex1=1)  then F:= F/1000;
+ end;
+ EFreq1.Text := FloatToStr(F);
  HandleFChange(TComboBox(Sender).tag);
+ ScaleIndex1 := CBFScale1.ItemIndex;
 end;
 
 procedure TFMain.EFreq1KeyPress(Sender: TObject; var Key: char);
 begin
  if (Key = #13) then  HandleFChange(TEdit(Sender).tag);
 end;
+procedure TFMain.EFreq1Change(Sender: TObject);
+begin
+  // do nothing by JG
+end;
+
+// by JG: mouse wheel support for Amp CH1
+procedure TFMain.EAmp1MouseWheel(Sender: TObject; Shift: TShiftState;
+  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+
+var A : double;
+    fac : double;
+    pos : integer;
+    len : integer;
+    s   : string;
+begin
+    pos :=  EAmp1.SelStart;
+    s :=  EAmp1.Text;
+    len := s.Length;
+
+    A := StrToFloat(EAmp1.text);
+    if ((len-pos) = 0)
+    then begin
+      fac := 0.01;
+    end
+    else if ((len-pos) =1) then begin
+      fac := 0.1;
+    end
+     else begin
+       fac := 1;
+     end;
+
+    if (WheelDelta > 0) and (A < 20)then begin
+    A := A + fac;
+    end
+    else begin
+      if (A > 0.01) then
+       A:= A-fac;
+    end;
+
+    if (A <= 0) then A:= 0.01;
+
+    EAmp1.Text := FloatToStrF(A,ffFixed,10,2);
+    EAmp1.SelStart := pos;
+    if not(AmplitudeSet(CH1,A)) then ShowMessage('Amplitude: '+sRangeError);
+end;
+
+// by JG mouse wheel support for  Offest CH1
+procedure TFMain.EOfs1MouseWheel(Sender: TObject; Shift: TShiftState;
+  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+
+var A : double;
+    fac : double;
+    pos : integer;
+    len : integer;
+    s   : string;
+begin
+    pos :=  EOfs1.SelStart;
+    s :=  EOfs1.Text;
+    len := s.Length;
+
+    A := StrToFloat(EOfs1.text);
+    if ((len-pos) = 0)
+    then begin
+      fac := 0.01;
+    end
+    else if ((len-pos) =1) then begin
+      fac := 0.1;
+    end
+     else begin
+       fac := 1;
+     end;
+
+    if (WheelDelta > 0)and (A < 10) then begin
+      A := A + fac;
+    end
+    else if (WheelDelta < 0) and (A > -10) then begin
+       A:= A-fac;
+    end;
+
+    EOfs1.Text := FloatToStrF(A,ffFixed,10,2);
+    EOfs1.SelStart := pos;
+    if not(OffsetSet(CH1,A)) then ShowMessage('Offset: '+sRangeError);
+
+end;
+
+
+// by JG mouse wheel support for Freq. CH1
+procedure TFMain.EFreq1MouseWheel(Sender: TObject; Shift: TShiftState;
+  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+
+var F : double;
+    fac : integer;
+    pos : integer;
+    s : string;
+    lenNew, lenOld : integer;
+begin
+    pos :=  FMain.EFreq1.SelStart;
+
+    s := EFreq1.Text;
+    lenOld := s.Length;
+    F := StrToFloat(EFreq1.text);
+    fac := 1;
+
+    if F >= 100000 then
+    begin
+      case pos of
+       1 : fac := 100000;
+       2 : fac := 10000;
+       3 : fac := 1000;
+       4 : fac := 100;
+       5 : fac := 10;
+      end;
+    end
+    else
+    if F >= 10000 then
+    begin
+      case pos of
+       1 : fac := 10000;
+       2 : fac := 1000;
+       3 : fac := 100;
+       4 : fac := 10;
+      end;
+    end
+    else
+    if F >= 1000 then
+    begin
+      case pos of
+       1 : fac := 1000;
+       2 : fac := 100;
+       3 : fac := 10;
+      end;
+    end
+    else
+    if F >= 100 then
+    begin
+      case pos of
+       1 : fac := 100;
+       2 : fac := 10;
+      end;
+    end
+    else
+    if f >= 10 then
+    begin
+     case pos of
+       0 : fac := 10;
+       1 : fac := 10;
+     end;
+    end;
+
+    if (WheelDelta > 0) then begin
+    F := F + fac;
+    end
+    else begin
+      if (F >1) then
+       F:= F-fac;
+    end;
+
+    if (F < 0) then F:=1;
+    EFreq1.Text := FloatToStr(F);
+    s := EFreq1.Text;
+    lenNew := s.Length;
+
+    if (lenOld < lenNew) and (pos <= 6) then
+     EFreq1.SelStart := pos +1
+    else
+    if (lenOld > lenNew) and (pos >= 1)  then
+     EFreq1.SelStart := pos-1
+    else
+     EFreq1.SelStart := pos;
+    HandleFChange(TEdit(Sender).tag);
+end;
+
+// by JG
+procedure TFMain.EFreq2MouseWheel(Sender: TObject; Shift: TShiftState;
+  WheelDelta: Integer; MousePos: TPoint; var Handled: Boolean);
+begin
+    // todo by JG
+end;
+
 
 {============================================================================
- Handle Pulse width Changes
+ Handle Pulse-Width Changes
 =============================================================================}
 procedure TFMain.HandlePWChange(Sender: TObject);
 var PW: double;
@@ -295,6 +557,16 @@ end;
 procedure TFMain.EPulseWidthKeyPress(Sender: TObject; var Key: char);
 begin
  if (Key = #13) then  HandlePWChange(self);
+end;
+
+procedure TFMain.LOfs1Click(Sender: TObject);
+begin
+
+end;
+
+procedure TFMain.LOfs2Click(Sender: TObject);
+begin
+
 end;
 
 {============================================================================
@@ -437,6 +709,8 @@ procedure TFMain.UpdateDisplayState(M: integer);
     begin Scale := 1; {KHz}; result := FloatToStrF(F/1e3,ffFixed,10,5) end
    else
     begin Scale := 0; {Hz}; result := FloatToStrF(F,ffFixed,10,2) end
+
+
   end;
 
 begin
@@ -447,6 +721,7 @@ begin
  EOfs1.Text := FloatToStrF(CState.C1Ofs,ffFixed,6,2);
  EFreq1.Text := DisplayFreq(CState.C1freq);
  CBFScale1.ItemIndex := scale;
+ ScaleIndex1 := scale;
  EDC1.Text  := FloatToStrF(CState.C1Duty,ffFixed,6,2);
 
  CBWaveForm2.ItemIndex := CState.C2Wave;
@@ -558,6 +833,12 @@ begin
    end;
 end;
 
+procedure TFMain.ComboBoxSerPortChange(Sender: TObject);
+begin
+
+end;
+
+
 procedure TFMain.BArbStoreClick(Sender: TObject);
 var i,j: integer;
 
@@ -577,22 +858,25 @@ begin
   begin
    ArbTarget := RGMemory.ItemIndex+1;
    Send('DDS_WAVE'+char($A5));
-   Waiting;
-   if (sReceived <> 'X') then exit;
+   sleep(200);
+   //Waiting;
+   //if (sReceived <> 'X') then exit;
    label2.caption := sReceived;
-   Application.ProcessMessages;
+   //Application.ProcessMessages;
    sleep(200);
    Send('DDS_WAVE'+char($F0+ArbTarget));
-   Waiting;
-   if (sReceived <> 'SE') then exit;
+   sleep(200);
+   //Waiting;
+   //if (sReceived <> 'SE') then exit;
    label2.caption := sReceived;
-   Application.ProcessMessages;
-   Sleep(200);
+   //Application.ProcessMessages;
+   sleep(200);
    Send('DDS_WAVE'+char(ArbTarget));
-   Waiting;
-   if (sReceived <> 'WX') then exit;
+   sleep(200);
+   //Waiting;
+   //if (sReceived <> 'W') then exit;
    label2.caption := sReceived;
-   Application.ProcessMessages;
+   //Application.ProcessMessages;
    sleep(200);
     for i := 1 to 2048 do
     begin
@@ -604,7 +888,7 @@ begin
      sleep(5);
     end;
    waiting;
-   label2.caption := sReceived;
+   label2.caption := 'OK';
   end
  else ShowMessage('Please identify a waveform file.');
 end;
@@ -715,14 +999,14 @@ begin
 end;
 
 function SLineExecuted(sLine: string): boolean;
-var i,len,nInt: integer;
+var i,nInt: integer;
  nParm: double;
  sCode,sParm: shortstring;
  done, fail: boolean;
 const NUMS = ['+','-','.','0','1','2','3','4','5','6','7','8','9'];
       ENDS = ['*',';',' '];
 begin
- len := length(sLine);
+ //len := length(sLine);
  done := false;
  fail := false;
  sLine := UpperCase(sLine) + '****';
@@ -796,6 +1080,37 @@ begin
   begin
    Timer1.Enabled := False;
   end;
+end;
+
+{ by JG: define and open Ser-Port from Form }
+procedure TFMain.BtnSerStartClick(Sender: TObject);
+var S: string;
+begin
+  bTTYPortvalid := SerPortOpen(ComboBoxSerPort.Caption);
+  if bTTYPortvalid then begin
+    FMain.BtnSerStart.Enabled := false;
+    FMain.BtnSerStart.Caption := 'Port open';
+  end
+  else begin
+      ShowMessage('No valid Ser-Port: ' + sTTYPort);
+      Exit;
+  end;
+
+  S := SendWithResponse('a');
+  if S = '' then
+  begin
+   ShowMessage('not connected to ' + sTTYPort);
+    FMain.BtnSerStart.Enabled := true;
+    Exit;
+  end
+ else
+ begin
+     FMain.LblConnect.Caption:= 'connected';
+     FMain.LblConnect.Color:= clMoneyGreen;
+  end;
+
+
+
 end;
 
 procedure TFMain.Timer1Timer(Sender: TObject);
